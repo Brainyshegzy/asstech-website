@@ -1,20 +1,14 @@
 document.addEventListener("DOMContentLoaded", function () {
   const hamburger = document.getElementById("hamburger");
   const navMenu = document.getElementById("nav-menu");
-  const navLinks = navMenu.querySelectorAll("a");
 
-  // Toggle menu
   hamburger.addEventListener("click", function () {
-    navMenu.classList.toggle("active");
+    if (navMenu.style.display === "flex") {
+      navMenu.style.display = "none";
+    } else {
+      navMenu.style.display = "flex";
+    }
   });
-
-  // Close menu when a link is clicked
-  navLinks.forEach(link => {
-    link.addEventListener("click", function () {
-      navMenu.classList.remove("active");
-    });
-  });
-});
 
   // WhatsApp Button Redirect
   const whatsappBtn = document.querySelector('.contact-buttons button');
