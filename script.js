@@ -1,14 +1,22 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const hamburger = document.getElementById("hamburger");
-  const navMenu = document.getElementById("nav-menu");
+    const hamburger = document.querySelector(".hamburger");
+    const navMenu = document.querySelector(".nav-menu");
+    const navLinks = document.querySelectorAll(".nav-menu a");
 
-  hamburger.addEventListener("click", function () {
-    if (navMenu.style.display === "flex") {
-      navMenu.style.display = "none";
-    } else {
-      navMenu.style.display = "flex";
-    }
-  });
+    // Toggle menu when hamburger is clicked
+    hamburger.addEventListener("click", function () {
+        navMenu.classList.toggle("active");
+        hamburger.classList.toggle("active");
+    });
+
+    // Close menu when any nav link is clicked
+    navLinks.forEach(link => {
+        link.addEventListener("click", function () {
+            navMenu.classList.remove("active");
+            hamburger.classList.remove("active");
+        });
+    });
+});
 
   // WhatsApp Button Redirect
   const whatsappBtn = document.querySelector('.contact-buttons button');
