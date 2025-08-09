@@ -1,21 +1,30 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const hamburger = document.querySelector(".hamburger");
-    const navMenu = document.querySelector(".nav-menu");
-    const navLinks = document.querySelectorAll(".nav-menu a");
+document.addEventListener('DOMContentLoaded', () => {
+  const hamburger = document.getElementById('hamburger');
+  const navMenu = document.getElementById('nav-menu');
 
-    // Toggle menu when hamburger is clicked
-    hamburger.addEventListener("click", function () {
-        navMenu.classList.toggle("active");
-        hamburger.classList.toggle("active");
-    });
+  // Toggle menu when hamburger is clicked
+  hamburger.addEventListener('click', () => {
+    const isOpen = navMenu.style.display === 'flex';
+    navMenu.style.display = isOpen ? 'none' : 'flex';
+    // accessibility
+    hamburger.setAttribute('aria-expanded', String(!isOpen));
+  });
 
-    // Close menu when any nav link is clicked
-    navLinks.forEach(link => {
-        link.addEventListener("click", function () {
-            navMenu.classList.remove("active");
-            hamburger.classList.remove("active");
-        });
+  // Close the menu when any nav link is clicked
+  navMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navMenu.style.display = 'none';
+      hamburger.setAttribute('aria-expanded', 'false');
     });
+  });
+
+  // Optional: close the menu when clicking outside it
+  document.addEventListener('click', (e) => {
+    if (!navMenu.contains(e.target) && e.target !== hamburger) {
+      navMenu.style.display = 'none';
+      hamburger.setAttribute('aria-expanded', 'false');
+    }
+  });
 });
 
   // WhatsApp Button Redirect
