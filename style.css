@@ -31,71 +31,33 @@ header {
   object-fit: contain;
 }
 
-/* Hamburger default styling */
+/* Hamburger Menu */
 .hamburger {
-  display: none;
-  flex-direction: column;
+  background: none;
+  border: none;
+  font-size: 30px;
   cursor: pointer;
-  gap: 5px;
+  color: #000;
 }
 
-.hamburger span {
-  display: block;
-  width: 25px;
-  height: 3px;
-  background-color: #333; /* change to match your theme */
-  transition: all 0.3s ease;
+#nav-menu {
+  display: none;
+  position: absolute;
+  top: 80px;
+  right: 20px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 10px;
+  z-index: 1001;
+  flex-direction: column;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Mobile menu */
-.nav-links {
-  display: flex;
-  list-style: none;
-  gap: 20px;
-}
-
-.nav-links li a {
+#nav-menu a {
+  color: #000;
   text-decoration: none;
-  color: #333; /* change to match your theme */
-}
-
-/* Hide nav links on mobile */
-@media (max-width: 768px) {
-  .hamburger {
-    display: flex;
-  }
-
-  .nav-links {
-    position: absolute;
-    top: 60px; /* adjust based on your header height */
-    right: 0;
-    width: 200px;
-    height: auto;
-    flex-direction: column;
-    align-items: flex-start;
-    background: #fff; /* change to match your theme */
-    padding: 15px;
-    gap: 15px;
-    display: none;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  }
-
-  .nav-links.active {
-    display: flex;
-  }
-}
-
-/* Optional animation for hamburger toggle */
-.hamburger.active span:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
-}
-
-.hamburger.active span:nth-child(2) {
-  opacity: 0;
-}
-
-.hamburger.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(5px, -5px);
+  padding: 10px 15px;
+  font-weight: 500;
 }
 
 /* Banner */
