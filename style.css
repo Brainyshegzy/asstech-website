@@ -31,64 +31,71 @@ header {
   object-fit: contain;
 }
 
-/* Hamburger menu styles */
-.menu {
+/* Hamburger default styling */
+.hamburger {
   display: none;
   flex-direction: column;
-  gap: 10px;
-  background: #fff;
-  position: absolute;
-  top: 60px;
-  right: 0;
-  width: 200px;
-  padding: 15px;
-  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease, opacity 0.3s ease;
-  transform: translateY(-20px);
-  opacity: 0;
-  pointer-events: none;
-}
-
-.menu.active {
-  display: flex;
-  transform: translateY(0);
-  opacity: 1;
-  pointer-events: auto;
-}
-
-/* Hamburger icon */
-.hamburger {
   cursor: pointer;
-  display: flex;
-  flex-direction: column;
   gap: 5px;
 }
 
 .hamburger span {
-  height: 3px;
+  display: block;
   width: 25px;
-  background: #000;
-  border-radius: 3px;
+  height: 3px;
+  background-color: #333; /* change to match your theme */
+  transition: all 0.3s ease;
 }
 
-  .nav-menu {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    height: 100vh;
-    width: 250px;
-    background: white;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 30px;
-    transition: right 0.4s ease;
-    z-index: 1000;
+/* Mobile menu */
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #333; /* change to match your theme */
+}
+
+/* Hide nav links on mobile */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
   }
 
-  .nav-menu.active {
+  .nav-links {
+    position: absolute;
+    top: 60px; /* adjust based on your header height */
     right: 0;
+    width: 200px;
+    height: auto;
+    flex-direction: column;
+    align-items: flex-start;
+    background: #fff; /* change to match your theme */
+    padding: 15px;
+    gap: 15px;
+    display: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   }
+
+  .nav-links.active {
+    display: flex;
+  }
+}
+
+/* Optional animation for hamburger toggle */
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
 }
 
 /* Banner */
