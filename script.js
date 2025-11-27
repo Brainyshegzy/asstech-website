@@ -1,60 +1,35 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const hamburger = document.getElementById("hamburger");
-  const navMenu = document.getElementById("nav-menu");
+// Hamburger Menu Toggle
+const hamburger = document.getElementById('hamburger');
+const navMenu = document.getElementById('nav-menu');
 
-  hamburger.addEventListener("click", function () {
-    if (navMenu.style.display === "flex") {
-      navMenu.style.display = "none";
-    } else {
-      navMenu.style.display = "flex";
-    }
-  });
-
-  // WhatsApp Button Redirect
-  const whatsappBtn = document.querySelector('.contact-buttons button');
-  if (whatsappBtn) {
-    whatsappBtn.addEventListener('click', () => {
-      window.open("https://wa.me/2348035858679", "_blank");
-    });
-  }
+hamburger.addEventListener('click', () => {
+  navMenu.classList.toggle('hidden');
 });
 
-document.addEventListener("DOMContentLoaded", () => {
-  const playButtons = document.querySelectorAll('.custom-play');
-  const videos = document.querySelectorAll('.portfolio-video');
+// Close menu when link clicked (mobile)
+const navLinks = navMenu.querySelectorAll('a');
+navLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    navMenu.classList.add('hidden');
+  });
+});
 
-  playButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      const videoId = button.getAttribute('data-video');
-      const video = document.getElementById(videoId);
+// Custom Video Play Buttons
+const playButtons = document.querySelectorAll('.custom-play');
 
-      // Pause all other videos
-      videos.forEach(v => {
-        if (v !== video) {
-          v.pause();
-          v.currentTime = 0;
-          const playIcon = v.parentElement.querySelector('.custom-play');
-          if (playIcon) playIcon.style.display = 'block';
-        }
-      });
+playButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const videoId = btn.getAttribute('data-video');
+    const video = document.getElementById(videoId);
 
-      // Play the selected video
+    if(video.paused) {
       video.play();
-      button.style.display = 'none';
+      btn.style.display = 'none'; // hide play button while video plays
+    }
 
-      // When video ends, show play button again
-      video.onended = () => {
-        button.style.display = 'block';
-      };
-    });
-
-    // Pause video if clicked directly
-    const video = document.getElementById(button.getAttribute('data-video'));
-    video.addEventListener('click', () => {
-      if (!video.paused) {
-        video.pause();
-        button.style.display = 'block';
-      }
+    // Optional: show button again when video ends
+    video.addEventListener('ended', () => {
+      btn.style.display = 'block';
     });
   });
 });
