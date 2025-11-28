@@ -257,6 +257,16 @@ section h2 {
   text-transform: uppercase;
 }
 
+#managing-director {
+  text-align: center;
+}
+
+#managing-director .team-member {
+  margin-left: auto;
+  margin-right: auto;
+  display: inline-block;
+}
+
 .team {
   display: flex;
   flex-wrap: wrap;
