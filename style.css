@@ -33,7 +33,7 @@ header {
 }
 
 .logo {
-  height: 75px;
+  height: 85px;
   width: auto;
   object-fit: contain;
 }
@@ -449,7 +449,7 @@ section h2 {
 
 /* Footer */
 footer {
-  background-color: #111;
+  background-color: #e0e0e0;
   color: #fff;
   padding: 30px 15px;
   text-align: center;
